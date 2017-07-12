@@ -437,45 +437,102 @@
 
     <!-- Main content -->
     <section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+      {% block content %}
+  {% if success.length>0 %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{success[0]}}
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Number</th>
-                  <th>Id</th>
-                  <th>Extras</th>
-                  <!-- <th></th> -->
-                </tr>
-                </thead>
-                <tbody>
-                {% for users in data %}
-                <tr>
-                 <td>{{users.name}}</td>
-              <td><a href ="/editUser/{{users._id.toString()}}">{{users.number}}</a></td>
-              <td>{{users.id}}</td>
-              <td>{{users.Extras}}</td>
-              <tr> <a href="/stories/">stories</a>
-
-
-               </tr>
-                 {% endfor %}
-                 </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
+    </div>
+    {% endif %}
+    {% if error.length>0 %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{error[0]}}
+            </div>
+        </div>
+    </div>
+  {% endif %}
+<div class="row">
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Edit an Apikey</div>
+    <div class="panel-body">
+      <form method="POST" action="/index2/{{data._id.toString()}}" class="form-horizontal">
+         <div class="form-group">
+          <label class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-10">
+            <input type="text" name="Name" value="{{data.name}}" id="projectName" 
+            >
+          </div>
+       <!--  </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Number</label>
+          <div class="col-sm-10">
+            <input type="text" name="Number" value="{{data.number}}" id="apikey"  required class="form-control">
+          </div> -->
+
+           </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" name="Email" value="{{data.email}}" id="apikey"  >
+          </div>
+
+             </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Village</label>
+          <div class="col-sm-10">
+            <input type="text" name="Village" value="{{data.location.village}}" id="apikey"  >
+          </div>
+
+             </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">District</label>
+          <div class="col-sm-10">
+            <input type="text" name="District" value="{{data.location.district}}" id="apikey" >
+          </div>
+
+             </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">State</label>
+          <div class="col-sm-10">
+            <input type="text" name="State" value="{{data.location.state}}" id="apikey" >
+          </div>
+
+             </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Country</label>
+          <div class="col-sm-10">
+            <input type="text" name="Country" value="{{data.location.country}}" id="apikey" >
+          </div>
+    
+           </div> -->
+
+
+        <div class="district"></div>
+
+        <div class="hr-dashed"></div>
+        <div class="form-group">
+          <div class="col-sm-8 col-sm-offset-2">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
+        </div>
+      </form>
+        <div class="hr-dashed"></div>
+          <div class="url col-sm-8 col-sm-offset-2"></div>
+          <button class="btn btn-primary" id="action">Generate Request url for this APIKey</button>
+    </div>
+  </div>
+</div>
+</div> -->
+{%endblock%}
+
     </section>
     <!-- /.content -->
   </div>

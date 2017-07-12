@@ -16,7 +16,7 @@ var async = require('async');
 var MongoStore = require('connect-mongo')(expressSession);
 
 //Database
-mongoose.connect('mongodb://localhost/ePermissions');
+mongoose.connect('mongodb://localhost/prakshep');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
@@ -43,6 +43,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/editUser",express.static(path.join(__dirname, 'public')));
+app.use("/index2",express.static(path.join(__dirname, 'public')));
+app.use("/stories",express.static(path.join(__dirname, 'public')));
+app.use("/index3",express.static(path.join(__dirname, 'public')));
+
 
 //Use flash Notifications
 app.use(flash());
@@ -53,7 +58,7 @@ var sessionOptions = {
   saveUninitialized : false,
   maxAge: new Date(Date.now() + 3600),
   store: new MongoStore({
-    url:"mongodb://localhost/ePermissions",
+    url:"mongodb://localhost/prakshep",
     //other advanced options
   })
 };

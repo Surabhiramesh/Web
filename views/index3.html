@@ -437,45 +437,96 @@
 
     <!-- Main content -->
     <section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+      {% block content %}
+  {% if success.length>0 %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{success[0]}}
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Number</th>
-                  <th>Id</th>
-                  <th>Extras</th>
-                  <!-- <th></th> -->
-                </tr>
-                </thead>
-                <tbody>
-                {% for users in data %}
-                <tr>
-                 <td>{{users.name}}</td>
-              <td><a href ="/editUser/{{users._id.toString()}}">{{users.number}}</a></td>
-              <td>{{users.id}}</td>
-              <td>{{users.Extras}}</td>
-              <tr> <a href="/stories/">stories</a>
-
-
-               </tr>
-                 {% endfor %}
-                 </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
+    </div>
+    {% endif %}
+    {% if error.length>0 %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{error[0]}}
+            </div>
+        </div>
+    </div>
+  {% endif %}
+<div class="row">
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Edit an Apikey</div>
+    <div class="panel-body">
+      <form method="POST" action="/index3/{{story._id.toString()}}" class="form-horizontal">
+         
+
+</div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Id</label>
+          <div class="col-sm-10">
+            <input type="text" name="Id" id="apikey"  value="{{story._id.toString()}}" disabled="" class="form-control" >
+          </div>
+
+ </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Time</label>
+          <div class="col-sm-10">
+            <input type="text" name="Time" value="{{story.time}}" id="apikey" class="form-control"  >
+          </div>
+
+             </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Set Balls</label>
+          <div class="col-sm-10">
+            <input type="text" name="setBalls" value="{{story.layerPrakshep.setBalls}}" id="apikey" class="form-control" >
+          </div>
+
+              </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Caption</label>
+          <div class="col-sm-10">
+            <input type="text" name="caption" value="{{story.caption}}" id="apikey" class="form-control" >
+          </div>
+      
+
+          </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Village</label>
+          <div class="col-sm-10">
+            <input type="text" name="village" value="{{story.location.village}}" id="apikey" class="form-control">
+          </div>
+
+             </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Taluk</label>
+          <div class="col-sm-10">
+            <input type="text" name="taluk" value="{{story.location.taluka}}" id="apikey" class="form-control">
+          </div>
+      
+
+      
+      
+      <div class="form-group">
+          <div class="col-sm-8 col-sm-offset-2">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
+        </div>
+      </form>
+        <div class="hr-dashed"></div>
+          <div class="url col-sm-8 col-sm-offset-2"></div>
+          <button class="btn btn-primary" id="action">Generate Request url for this APIKey</button>
+    </div>
+  </div>
+</div>
+</div> -->
+{%endblock%}
+
     </section>
     <!-- /.content -->
   </div>

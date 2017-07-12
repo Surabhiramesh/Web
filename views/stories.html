@@ -448,22 +448,21 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Number</th>
+                  <th>Village</th>
+                  <th>Timestamp</th>
                   <th>Id</th>
-                  <th>Extras</th>
                   <!-- <th></th> -->
                 </tr>
                 </thead>
                 <tbody>
                 {% for users in data %}
                 <tr>
-                 <td>{{users.name}}</td>
-              <td><a href ="/editUser/{{users._id.toString()}}">{{users.number}}</a></td>
-              <td>{{users.id}}</td>
-              <td>{{users.Extras}}</td>
-              <tr> <a href="/stories/">stories</a>
+                 <td>{{users.location.village }}</td>
+              <td>{{users.time}}</td>
+              <td><a href ="/stories/{{users._id.toString()}}">{{users.id}}</a></td>
+              
 
+ 
 
                </tr>
                  {% endfor %}
